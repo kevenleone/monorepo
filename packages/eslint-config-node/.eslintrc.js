@@ -1,44 +1,49 @@
 module.exports = {
   env: {
     browser: true,
-    es2020: true,
-    node: true,
-    jest: true
+    commonjs: true,
+    'cypress/globals': true,
+    es6: true
   },
   extends: [
-    'plugin:react/recommended',
     'standard',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'prettier/standard',
-    'prettier/react'
+    'plugin:cypress/recommended',
+    'plugin:react/recommended'
   ],
-  parser: '@typescript-eslint/parser',
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 11,
-    sourceType: 'module'
+    ecmaVersion: 2018
   },
-  plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort', 'sort-destructure-keys', 'sort-keys-fix'],
+  plugins: [
+    'cypress',
+    'simple-import-sort',
+    'sort-destructure-keys',
+    'sort-keys-fix',
+    'react'
+  ],
   rules: {
-    'semi': ["error", "always"],
-    "simple-import-sort/sort": "error",
-    "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": false, "minKeys": 2 }],
-    "sort-destructure-keys/sort-destructure-keys": [2, { "caseSensitive": false }],
-    "sort-keys-fix/sort-keys-fix": "warn",
-    "no-explicit-any": "off",
-    "camelcase": "off",
-    "@typescript-eslint/camelcase": ["error", { "genericType": "never" }],
-    "react/display-name": "off"
-  },
-  settings: {
-    'import/resolver': {
-      typescript: {}
-    },
-    react: {
-      version: 'detect',
-    },
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-async-tests': 'error',
+    'cypress/no-force': 'warn',
+    'cypress/no-unnecessary-waiting': 'error',
+    'max-len': ['error', { code: 120 }],
+    'simple-import-sort/sort': 'error',
+    'sort-destructure-keys/sort-destructure-keys': [2, { caseSensitive: false }],
+    'sort-keys': ['error', 'asc', { caseSensitive: true, natural: false, minKeys: 2 }],
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': [
+      'error',
+      {
+        extensions: ['.js', '.jsx']
+      }
+    ]
   }
 }
