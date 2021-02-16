@@ -15,8 +15,7 @@
       ]
     },
     "devDependencies": {
-      "@monorepo/eslint-config-node": "*",
-      "jest": "^26.1.0"
+      "@monorepo/eslint-config-node": "*"
     }
   }
   
