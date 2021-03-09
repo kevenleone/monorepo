@@ -21,13 +21,19 @@ class UserBaseInput {
 export class CreateUserInput extends UserBaseInput {}
 
 @InputType()
-export class UpdateUserInput extends UserBaseInput {}
+class UpdateUserInput extends UserBaseInput {}
 
 @InputType()
-export class FilterUserInput {
+class FilterUserInput {
   @Field({ nullable: true })
   firstName?: string;
 
   @Field({ nullable: true })
   email?: string;
 }
+
+export default {
+  create: CreateUserInput,
+  filter: FilterUserInput,
+  update: UpdateUserInput
+};

@@ -5,7 +5,7 @@ import { Configuration } from '../../interfaces';
 
 @Resolver()
 export class ConfigResolver {
-  @Query(() => Configuration, { name: `getConfig` })
+  @Query(() => Configuration, { name: 'getConfig' })
   getConfig(): Configuration {
     const { version: APP_VERSION } = PKG;
     return {

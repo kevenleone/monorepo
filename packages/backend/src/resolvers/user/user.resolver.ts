@@ -6,23 +6,17 @@ import { promisify } from 'util';
 import { User } from '../../entity/User';
 import { createBaseResolver } from '../../utils/createBaseResolver';
 import { constants, logger } from '../../utils/globalMethods';
-import { CreateUserInput, FilterUserInput, UpdateUserInput } from './Inputs';
+import Inputs, { CreateUserInput } from './Inputs';
 
 const { JWT_SECRET = '' } = process.env;
 
 const { USER_NOT_FOUND, USER_PASSWORD_INVALID } = constants;
 
-const Inputs = {
-  create: CreateUserInput,
-  filter: FilterUserInput,
-  update: UpdateUserInput,
-};
-
-const BaseResolver = createBaseResolver('User', User, User, Inputs);
+const BaseResolver = createBaseResolver('User', User, Inputs);
 
 @Resolver(User)
 export class UserResolver extends BaseResolver {
-  @Mutation(() => User, { name: `createUser` })
+  @Mutation(() => User, { name: 'createUser' })
   async createUser(
     @Arg('data', () => CreateUserInput) data: CreateUserInput,
   ): Promise<User | undefined> {

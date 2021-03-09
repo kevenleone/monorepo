@@ -5,7 +5,7 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.json(),
-    winston.format.colorize(),
+    winston.format.colorize()
   ),
   level: 'debug',
   transports: [
@@ -14,16 +14,16 @@ const logger = winston.createLogger({
       datePattern: 'YYYY-MM-DD',
       filename: './log/app-%DATE%.log',
       maxFiles: '3d',
-      maxSize: '10m',
-    }),
-  ],
+      maxSize: '10m'
+    })
+  ]
 });
 
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new winston.transports.Console({
-      format: winston.format.simple(),
-    }),
+      format: winston.format.simple()
+    })
   );
 }
 

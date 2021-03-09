@@ -12,7 +12,7 @@ export const isAuth: MiddlewareFn<MyContext> = async (ctx, next) => {
   if (AUTH_MIDDLEWARE_ENABLED) {
     const {
       body,
-      headers: { authorization },
+      headers: { authorization }
     } = ctx.context.req;
     const operationName = getGraphqlOperation(body.query);
     if (authorization) {
@@ -21,7 +21,7 @@ export const isAuth: MiddlewareFn<MyContext> = async (ctx, next) => {
         const user: any = await promisify(jwt.verify)(token);
         ctx.context.req.headers.loggedUser = user;
         logger.debug(
-          `${user.firstName} is running a graphQL request to ${operationName}`,
+          `${user.firstName} is running a graphQL request to ${operationName}`
         );
         return next();
       } catch (e) {
